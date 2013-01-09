@@ -1,4 +1,4 @@
 <layers>
     <layer name="collective.categories"
-           interface="collective.categories.browser.interfaces.ILayer" />
+           interface="collective.categories.layer.Layer" />
 </layers>

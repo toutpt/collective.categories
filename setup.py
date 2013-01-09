@@ -29,6 +29,7 @@ setup(name='collective.categories',
       install_requires=[
           'setuptools',
           'Products.ATVocabularyManager',
+          'plone.api',
           # -*- Extra requirements: -*-
       ],
       extras_require=dict(

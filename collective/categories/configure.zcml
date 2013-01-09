@@ -7,8 +7,6 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="collective.categories">
 
-  <include package=".browser" />
-
   <i18n:registerTranslations directory="locales" />
 
   <genericsetup:registerProfile
@@ -20,4 +18,30 @@
       />
   <include file="upgrades.zcml" />
 
+  <include package="archetypes.schemaextender" />
+
+  <adapter
+    factory=".extender.CategoriesExtender"
+    provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender"/>
+  <adapter
+    name="categories"
+    factory=".indexers.categories" />
+
+  <interface
+      interface=".layer.Layer"
+      name="collective.categories"
+      />
+  <genericsetup:importStep
+      name="collective-categories-various"
+      title="collective.categories"
+      description=""
+      handler="collective.categories.setuphandlers.importVarious"
+      >
+      <depends name="atvm-vocabularies"/>
+      <depends name="atvocabularymanager-various"/>
+  </genericsetup:importStep>
+  <utility
+    component=".vocabulary.CategoriesVocabularyFactory"
+    name="collective.categories.vocabulary.categories"
+    />
 </configure>

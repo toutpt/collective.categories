@@ -15,6 +15,9 @@ How to install
 This addon can be installed has any other addons. please follow official
 documentation_
 
+For the best of both world you should try eea.tags to make the Subject field
+of your Plone look like a tags field.
+
 Credits
 =======
 
