@@ -81,7 +81,6 @@ class CategoriesExtender(object):
         if self.extender is None:
             name = self.registry.get('collective.categories.backend',
                                      'default')
-
             if name == 'Products.ATVocabularyManager':
                 self.extender = atvm_extender.CategoriesExtender(self.context)
             elif name == 'archetypes.linguakeywordwidget':

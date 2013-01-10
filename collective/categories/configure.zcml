@@ -8,6 +8,7 @@
     i18n_domain="collective.categories">
 
   <i18n:registerTranslations directory="locales" />
+  <cmf:registerDirectory name="collective_categories" />
 
   <genericsetup:registerProfile
       name="default"

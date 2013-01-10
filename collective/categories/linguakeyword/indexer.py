@@ -6,5 +6,4 @@ def indexer(context):
         return
 
     values = field.get(context)
-    lingua_values = context.getLinguaKeywordsFromValue(values)
-    return lingua_values
+    return values
