@@ -42,14 +42,4 @@
     name="collective.categories.vocabulary.categories"
     />
 
-  <genericsetup:importStep
-      name="collective-categories-various"
-      title="collective.categories"
-      description=""
-      handler="collective.categories.setuphandlers.importVarious"
-      >
-      <depends name="atvm-vocabularies"/>
-      <depends name="atvocabularymanager-various"/>
-  </genericsetup:importStep>
-
 </configure>

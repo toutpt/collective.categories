@@ -38,7 +38,9 @@ setup(name='collective.categories',
           # -*- Extra requirements: -*-
       ],
       extras_require=dict(
-          test=['plone.app.testing'],
+          test=['plone.app.testing',
+                'Products.ATVocabularyManager',
+                'archetypes.linguakeywordwidget'],
       ),
       entry_points="""
       # -*- Entry points: -*-
