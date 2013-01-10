@@ -1,8 +1,21 @@
 import types
+import pkg_resources
 from plone.indexer import indexer
 from Products.Archetypes.interfaces.base import IBaseObject
 from Products.CMFCore.utils import getToolByName
-#from Products.ATVocabularyManager.utils.vocabs import fetchValueByKeyFromVocabularyDict
+from zope.component._api import getUtility
+from plone.registry.interfaces import IRegistry
+
+try:
+    pkg_resources.get_distribution('Products.ATVocabularyManager')
+    from collective.categories.atvm import indexer as atvm_indexer
+except pkg_resources.DistributionNotFound:
+    pass
+try:
+    pkg_resources.get_distribution('archetypes.linguakeywordwidget')
+    from collective.categories.linguakeyword import indexer as lk_indexer
+except pkg_resources.DistributionNotFound:
+    pass
 
 
 def getPathFromVDict(searchedkey, vdict, path=""):
@@ -25,32 +38,20 @@ def getPathFromVDict(searchedkey, vdict, path=""):
     return None
 
 
-@indexer(IBaseObject)
-def categories(context):
-    categories = []
-
+def default_indexer(context):
     field = context.getField('categories')
     if not field:
         return
     values = field.get(context)
-    if not values:
-        return
-    atvm = getToolByName(context, 'portal_vocabularies')
-    if not atvm:
-        return
-    vocab = atvm.getVocabularyByName('collective_categories')
-    if not vocab:
-        return
-    vdict = vocab.getVocabularyDict()
+    return values
 
-    for uid in values:
-        path = getPathFromVDict(uid, vdict)
 
-        if path:
-            cdict = vdict
-            for key in path.split('/'):
-                if key:
-                    categories.append(cdict[key][0])
-                    cdict = cdict[key][1]
-
-    return categories
+@indexer(IBaseObject)
+def categories(context):
+    registry = getUtility(IRegistry)
+    name = registry.get('collective.categories.backend', 'default')
+    if name == 'Products.ATVocabularyManager':
+        return atvm_indexer.indexer(context)
+    elif name == 'archetypes.linguakeywordwidget':
+        return lk_indexer.indexer(context)
+    return default_indexer(context)

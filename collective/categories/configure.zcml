@@ -18,11 +18,14 @@
       />
   <include file="upgrades.zcml" />
 
-  <include package="archetypes.schemaextender" />
 
+  <!-- schema extender -->
+  <include package="archetypes.schemaextender" />
   <adapter
     factory=".extender.CategoriesExtender"
     provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender"/>
+
+  <!-- indexer -->
   <adapter
     name="categories"
     factory=".indexers.categories" />
@@ -31,6 +34,13 @@
       interface=".layer.Layer"
       name="collective.categories"
       />
+
+  <!-- vocab -->
+  <utility
+    component=".vocabulary.CategoriesVocabularyFactory"
+    name="collective.categories.vocabulary.categories"
+    />
+
   <genericsetup:importStep
       name="collective-categories-various"
       title="collective.categories"
@@ -40,8 +50,5 @@
       <depends name="atvm-vocabularies"/>
       <depends name="atvocabularymanager-various"/>
   </genericsetup:importStep>
-  <utility
-    component=".vocabulary.CategoriesVocabularyFactory"
-    name="collective.categories.vocabulary.categories"
-    />
+
 </configure>

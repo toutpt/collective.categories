@@ -29,7 +29,6 @@ setup(name='collective.categories',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'Products.ATVocabularyManager',
           # -*- Extra requirements: -*-
       ],
       extras_require=dict(
