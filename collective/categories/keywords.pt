@@ -5,7 +5,7 @@
                  categories view/categories|nothing;
                  url_quote  nocall:modules/Products.PythonScripts.standard/url_quote;"
      tal:condition="python:tags or categories">
-  <tal:filedunder i18n:translate="label_filed_under">Filed under:</tal:filedunder>
+  <tal:filedunder i18n:translate="label_filed_under" tal:condition="tags">Filed under:</tal:filedunder>
   <span tal:repeat="category tags">
     <a href=""
        class="link-category"

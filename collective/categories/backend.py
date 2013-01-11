@@ -86,4 +86,4 @@ def get_backend(context):
 @indexer(IBaseContent)
 def categories_indexer(context):
     backend = get_backend(context)
-    return backend.get_categories()
+    return backend.indexer()
