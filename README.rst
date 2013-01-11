@@ -83,3 +83,9 @@ People
 .. |makinacom| image:: http://depot.makina-corpus.org/public/logo.gif
 .. _makinacom:  http://www.makina-corpus.com
 .. _documentation: http://plone.org/documentation/kb/installing-add-ons-quick-how-to
+
+
+TODO
+====
+
+* [ ] Fix tests using atvm (unauthorize is raised during the invokeFactory)
