@@ -1,6 +1,9 @@
 Introduction
 ============
 
+.. image:: https://secure.travis-ci.org/toutpt/collective.categories.png
+    :target: http://travis-ci.org/toutpt/collective.categories
+
 Categories are not tags. Categories allowed for a broad grouping of post topics.
 They can be hierarchical but you should not have that much categories.
 
