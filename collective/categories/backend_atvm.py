@@ -7,7 +7,7 @@ from Products.CMFCore.utils import getToolByName
 
 from Products.ATVocabularyManager import NamedVocabulary
 from Products.ATVocabularyManager.utils.vocabs import fetchValuePathFromVDict
-from collective.categories.backend import ICategoriesBackend
+from collective.categories.backend import ICategoriesBackend, DefaultBackend
 from Products.Archetypes.interfaces.base import IBaseContent
 
 _ = i18nmessageid.MessageFactory('collective.categories')
@@ -32,18 +32,13 @@ class CategoriesExtender(object):
         self.context = context
 
 
-class Backend(object):
+class Backend(DefaultBackend):
     """ATVocabularyManager based categories backend"""
-    interface.implements(ICategoriesBackend)
-    component.adapts(IBaseContent)
-
-    def __init__(self, context):
-        self.context = context
 
     def get_extender_class(self):
         return CategoriesExtender
 
-    def indexer(self):
+    def get_categories(self):
         categories = []
 
         field = self.context.getField('categories')

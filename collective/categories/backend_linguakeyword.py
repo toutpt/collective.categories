@@ -8,6 +8,7 @@ from archetypes.linguakeywordwidget import LinguaKeywordWidget
 
 from collective.categories import backend
 from Products.Archetypes.interfaces.base import IBaseContent
+from collective.categories.backend import DefaultBackend
 
 _ = i18nmessageid.MessageFactory('collective.categories')
 
@@ -30,21 +31,18 @@ class CategoriesExtender(object):
         self.context = context
 
 
-class Backend(object):
+class Backend(DefaultBackend):
     interface.implements(backend.ICategoriesBackend)
     component.adapts(IBaseContent)
 
     def __init__(self, context):
         self.context = context
 
-    def indexer(self):
-        field = self.context.getField('categories')
-        if not field:
-            return
-
-        values = field.get(self.context)
-        return values
-
     def get_extender_class(self):
         """Return the class to use as extender"""
         return CategoriesExtender
+
+    def get_categories(self):
+        values = self.indexer()
+        language = self.context.Language()
+        return [(value, value[len(language) + 1:]) for value in values]

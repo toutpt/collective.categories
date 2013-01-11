@@ -7,7 +7,7 @@
 ##bind subpath=traverse_subpath
 ##parameters=name, index, vocab_source='portal_catalog'
 REQUEST = context.REQUEST
-context.plone_log('???')
+
 #patch to support keyword widget using schema extender
 #let integrator work around that issue
 if index is None:

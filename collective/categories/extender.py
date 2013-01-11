@@ -1,4 +1,4 @@
-from zope.component import adapts, getUtility, queryAdapter
+from zope.component import adapts
 from zope.interface import implements
 from zope import i18nmessageid
 
@@ -6,10 +6,8 @@ from archetypes.schemaextender.interfaces import IOrderableSchemaExtender
 from archetypes.schemaextender.interfaces  import IBrowserLayerAwareExtender
 from Products.Archetypes.interfaces import IBaseContent
 
-from plone.registry.interfaces import IRegistry
-
 from collective.categories.layer import Layer
-from collective.categories.backend import ICategoriesBackend, DefaultBackend
+from collective.categories.backend import get_backend
 
 _ = i18nmessageid.MessageFactory('collective.categories')
 
@@ -45,14 +43,6 @@ class CategoriesExtender(object):
         return self.fields
 
     def update(self):
-        if self.registry is None:
-            self.registry = getUtility(IRegistry)
         if self.extender is None:
-            name = self.registry.get('collective.categories.backend',
-                                     'default')
-            backend = queryAdapter((self.context, ),
-                                 interface=ICategoriesBackend,
-                                 name=name)
-            if not backend:
-                backend = DefaultBackend(self.context)
+            backend = get_backend(self.context)
             self.extender = backend.get_extender_class()(self.context)
