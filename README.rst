@@ -10,9 +10,10 @@ and in the portal_catalog to be able to do search based on categories.
 Features
 ========
 
-You can add categories to your content. This addon by default use the same
-storage and widget as the tags keyword. But you can install and configure
-extra storage / widget.
+You can add categories to your content.
+
+Pluggable backend. This addon by default use the same storage and widget
+as the tags keyword. But you can install and configure extra storage / widget.
 
 Configure the backend using the registry configlet or in a profile as follow::
 
@@ -40,6 +41,7 @@ LinesField for storage.
 If you use this backend you should check the skin directories order because
 they both override the script collectKeyword.py. 'linguakeywordwidget'
 skin directory should be before the 'collective_categories' one.
+
 
 How to install
 ==============

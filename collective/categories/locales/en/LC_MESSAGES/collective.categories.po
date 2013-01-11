@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.categories\n"
-"POT-Creation-Date: 2013-01-09 17:09+0000\n"
+"POT-Creation-Date: 2013-01-11 14:36+0000\n"
 "PO-Revision-Date: 2008-02-04 18:00+0000\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
@@ -15,7 +15,14 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.categories\n"
 
-#: ./extender.py:33
+#: ./backend.py:37
+#: ./backend_atvm.py:27
+#: ./backend_linguakeyword.py:26
 msgid "Categories"
+msgstr ""
+
+#. Default: "Categories:"
+#: ./keywords.pt:20
+msgid "label_filed_under_categories"
 msgstr ""
 
