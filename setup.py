@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.0'
+version = '1.1.dev0'
 
 setup(name='collective.categories',
       version=version,
@@ -27,7 +27,7 @@ setup(name='collective.categories',
       keywords='plone tags categories',
       author='JeanMichel FRANCOIS aka toutpt',
       author_email='toutpt@gmail.com',
-      url='https://github.com/toutpt/collective/collective.categories',
+      url='https://github.com/toutpt/collective.categories',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['collective'],
