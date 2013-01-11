@@ -5,6 +5,7 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="collective.categories">
 
   <i18n:registerTranslations directory="locales" />
@@ -18,7 +19,6 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
   <include file="upgrades.zcml" />
-
 
   <!-- schema extender -->
   <include package="archetypes.schemaextender" />
@@ -41,5 +41,12 @@
     component=".vocabulary.CategoriesVocabularyFactory"
     name="collective.categories.vocabulary.categories"
     />
+
+<configure zcml:condition="installed Products.ATVocabularyManager">
+    <adapter factory=".backend_atvm.Backend" />
+</configure>
+<configure zcml:condition="installed archetypes.linguakeyword">
+    <adapter factory=".backend_linguakeyword.Backend" />
+</configure>
 
 </configure>
