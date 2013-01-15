@@ -32,8 +32,7 @@ class BackendsVocabulary(object):
     interface.implements(IVocabularyFactory)
 
     def __call__(self, context):
-        backends = list(component.getAdapters((self.context,),
-                                              ICategoriesBackend))
+        backends = list(component.getAdapters((context,), ICategoriesBackend))
         items = []
         for name, backend in backends:
             items.append(SimpleTerm(name, name, unicode(name)))

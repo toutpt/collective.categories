@@ -42,6 +42,10 @@
     component=".vocabulary.CategoriesVocabularyFactory"
     name="collective.categories.vocabulary.categories"
     />
+  <utility
+    component=".vocabulary.BackendsVocabularyFactory"
+    name="collective.categories.vocabulary.backends"
+    />
   <!--  viewlet  -->
   <browser:viewlet
     name="plone.belowcontenttitle.keywords"

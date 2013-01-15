@@ -32,8 +32,6 @@ class CategoriesExtender(object):
 
 
 class Backend(DefaultBackend):
-    interface.implements(backend.ICategoriesBackend)
-    component.adapts(IBaseContent)
 
     def __init__(self, context):
         self.context = context
