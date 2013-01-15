@@ -17,8 +17,13 @@ class TestSetup(base.IntegrationTestCase):
         brains = catalog(**query)
         self.assertEquals(len(brains), 1)
 
-    def test_portal_atct(self):
-        pass
+    def test_upgrades(self):
+        profile = 'collective.categories:default'
+        setup = self.portal.portal_setup
+        upgrades = setup.listUpgrades(profile, show_old=True)
+        self.assertTrue(len(upgrades) > 0)
+        for upgrade in upgrades:
+            upgrade['step'].doStep(setup)
 
 
 def test_suite():

@@ -49,6 +49,11 @@ class TestBackend(base.IntegrationTestCase):
         #check the extender class
         self.assertEqual(res.get_extender_class(), DefaultExtender)
 
+        registry = self.portal.portal_registry
+        registry['collective.categories.backend'] = "notexisting"
+        res = backend.get_backend(self.document)
+        self.assertEqual(res.get_extender_class(), DefaultExtender)
+
     def test_lkbackend(self):
         registry = self.portal.portal_registry
         registry['collective.categories.backend'] = LK_BACKEND

@@ -15,9 +15,6 @@ class CategoriesVocabulary(object):
         self.context = context
         self.catalog = getToolByName(context, "portal_catalog")
 
-        if self.catalog is None:
-            return SimpleVocabulary([])
-
         index = self.catalog._catalog.getIndex('categories')
 
         items = [SimpleTerm(i, b2a_qp(i), safe_unicode(i)) \
