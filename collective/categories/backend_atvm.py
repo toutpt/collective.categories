@@ -1,14 +1,11 @@
-from zope import component
 from zope import i18nmessageid
-from zope import interface
 from archetypes.schemaextender.field import ExtensionField
 from Products.Archetypes import atapi
 from Products.CMFCore.utils import getToolByName
 
 from Products.ATVocabularyManager import NamedVocabulary
 from Products.ATVocabularyManager.utils.vocabs import fetchValuePathFromVDict
-from collective.categories.backend import ICategoriesBackend, DefaultBackend
-from Products.Archetypes.interfaces.base import IBaseContent
+from collective.categories.backend import DefaultBackend
 
 _ = i18nmessageid.MessageFactory('collective.categories')
 
@@ -20,13 +17,11 @@ class ExtensionCategoriesField(ExtensionField, atapi.LinesField):
 class CategoriesExtender(object):
     """Add Categories field"""
 
-    fields = [
-        ExtensionCategoriesField("categories",
-            schemata="categorization",
-            vocabulary=NamedVocabulary('collective_categories'),
-            widget=atapi.MultiSelectionWidget(label=_(u"Categories")),
-            )
-    ]
+    fields = [ExtensionCategoriesField(
+                  "categories",
+                  schemata="categorization",
+                  vocabulary=NamedVocabulary('collective_categories'),
+                  widget=atapi.MultiSelectionWidget(label=_(u"Categories")))]
 
     def __init__(self, context):
         self.context = context

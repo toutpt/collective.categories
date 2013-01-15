@@ -68,5 +68,6 @@ class TestBackend(base.IntegrationTestCase):
         backend_atvm = backend.get_backend(self.document)
         #FIXME: check the base setup
 
+
 def test_suite():
     return unittest.defaultTestLoader.loadTestsFromName(__name__)

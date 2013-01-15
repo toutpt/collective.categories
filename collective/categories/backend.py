@@ -24,6 +24,7 @@ class ICategoriesBackend(interface.Interface):
     def indexer():
         """return categories for indexing (encoded strings)"""
 
+
 class ExtensionCategoriesField(ExtensionField, atapi.LinesField):
     """ Retrofitted date field """
 
@@ -35,7 +36,7 @@ class DefaultExtender(object):
         ExtensionCategoriesField("categories",
             schemata="categorization",
             widget=atapi.KeywordWidget(label=_(u"Categories")),
-            )
+        )
     ]
 
     def __init__(self, context):

@@ -3,7 +3,7 @@ from zope.interface import implements
 from zope import i18nmessageid
 
 from archetypes.schemaextender.interfaces import IOrderableSchemaExtender
-from archetypes.schemaextender.interfaces  import IBrowserLayerAwareExtender
+from archetypes.schemaextender.interfaces import IBrowserLayerAwareExtender
 from Products.Archetypes.interfaces import IBaseContent
 
 from collective.categories.layer import Layer

@@ -1,6 +1,5 @@
 import unittest2 as unittest
 from collective.categories.tests import base
-from plone import api
 
 
 class TestSetup(base.IntegrationTestCase):

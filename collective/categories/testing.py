@@ -1,4 +1,3 @@
-from plone.testing import z2
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import FunctionalTesting, PloneSandboxLayer
 #from plone.app.testing import PLONE_FIXTURE
@@ -24,8 +23,7 @@ class MyLayer(PloneSandboxLayer):
 FIXTURE = MyLayer()
 
 INTEGRATION = IntegrationTesting(bases=(FIXTURE,),
-                        name="collective.categories:Integration")
-
+                                 name="collective.categories:Integration")
 
 FUNCTIONAL = FunctionalTesting(bases=(FIXTURE,),
-                        name="collective.categories:Functional")
+                               name="collective.categories:Functional")

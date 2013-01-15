@@ -5,6 +5,7 @@ from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import safe_unicode
+from collective.categories.backend import ICategoriesBackend
 
 
 class CategoriesVocabulary(object):
@@ -19,7 +20,7 @@ class CategoriesVocabulary(object):
 
         index = self.catalog._catalog.getIndex('categories')
 
-        items = [SimpleTerm(i, b2a_qp(i), safe_unicode(i))\
+        items = [SimpleTerm(i, b2a_qp(i), safe_unicode(i)) \
                  for i in index._index]
 
         return SimpleVocabulary(items)
